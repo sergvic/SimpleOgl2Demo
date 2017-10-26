@@ -33,4 +33,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\freeglut.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Debug\freeglut.dll" />
+  </ItemGroup>
 </Project>

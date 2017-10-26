@@ -151,6 +151,12 @@
   <ItemGroup>
     <ClCompile Include="PainterDemo.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\freeglut.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Debug\freeglut.dll" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
