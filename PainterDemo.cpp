@@ -1,8 +1,12 @@
 #include "GL\freeglut.h"
 #include <time.h>
+#include <string>
+
+using namespace std;
 
 float min = -10, max = 10;
 float alp = 0;
+float y = max;
 size_t prevTime;
 
 void onDisplay()
@@ -14,11 +18,8 @@ void onDisplay()
 	glLineWidth(5);
 
 	glBegin(GL_LINES);
-	glVertex2f(-5.0-alp, -5.0 + alp);
-	glVertex2f(5 + alp, 5 - alp);
-	glColor3f(1, 0.5, 0);
-	glVertex2f(-5, 5);
-	glVertex2f(2, 5);
+	glVertex2f(min, y);
+	glVertex2f(max, y);
 	glEnd();
 
 	glutSwapBuffers();
@@ -26,24 +27,19 @@ void onDisplay()
 
 void onResize(int w, int h)
 {
-
+	glViewport(0, 0, w, h);
 }
 
 void onIdle()
 {
-	static float d = 0.5;
+	static float d = 0.1;
 	if (clock() - prevTime>20) {
 		prevTime = clock();
-		alp += d;
-		if (alp < min) {
-			alp = min;
-			d = -d;
-		}
 
-		if (alp > max) {
-			alp = max;
+		if (y <= min - 1 || y >= max + 1)
 			d = -d;
-		}
+		
+		y -= d;
 
 		glutPostRedisplay();
 	}
